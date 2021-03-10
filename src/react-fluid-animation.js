@@ -10,6 +10,7 @@ class ReactFluidAnimation extends Component {
   static propTypes = {
     content: PropTypes.string,
     config: PropTypes.object,
+    canvasStyle: PropTypes.object,
     style: PropTypes.object,
     animationRef: PropTypes.func,
     size: PropTypes.shape({
@@ -20,7 +21,8 @@ class ReactFluidAnimation extends Component {
 
   static defaultProps = {
     config: defaultConfig,
-    style: { }
+    style: { },
+    canvasStyle: { }
   }
 
   componentWillReceiveProps(props) {
@@ -54,6 +56,7 @@ class ReactFluidAnimation extends Component {
       config,
       animationRef,
       style,
+      canvasStyle,
       size,
       ...rest
     } = this.props
@@ -79,7 +82,8 @@ class ReactFluidAnimation extends Component {
           onTouchEnd={this._onTouchEnd}
           style={{
             width: '100%',
-            height: '100%'
+            height: '100%',
+            ...canvasStyle
           }}
         />
       </div>
